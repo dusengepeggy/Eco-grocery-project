@@ -7,7 +7,6 @@ export default function MyCart() {
 
 
 
-      
       <Text>MyCart</Text>
     </View>
   )
