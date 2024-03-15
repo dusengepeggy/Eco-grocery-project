@@ -2131,6 +2131,11 @@
   dependencies:
     "@sinonjs/commons" "^3.0.0"
 
+"@types/geojson@^7946.0.13":
+  version "7946.0.14"
+  resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-7946.0.14.tgz#319b63ad6df705ee2a65a73ef042c8271e696613"
+  integrity sha512-WCfD5Ht3ZesJUsONdhvm84dmzWOiOzOAqOncN0++w0lBw1o8OuDNJF2McvvCef/yBqb/HYRahp1BYtODFQ8bRg==
+
 "@types/hammerjs@^2.0.36":
   version "2.0.45"
   resolved "https://registry.npmjs.org/@types/hammerjs/-/hammerjs-2.0.45.tgz"
@@ -3391,7 +3396,14 @@ expo-keep-awake@~12.8.2:
   resolved "https://registry.npmjs.org/expo-keep-awake/-/expo-keep-awake-12.8.2.tgz"
   integrity sha512-uiQdGbSX24Pt8nGbnmBtrKq6xL/Tm3+DuDRGBk/3ZE/HlizzNosGRIufIMJ/4B4FRw4dw8KU81h2RLuTjbay6g==
 
-expo-modules-autolinking@>=0.8.1, expo-modules-autolinking@1.10.3:
+
+expo-location@^16.5.5:
+  version "16.5.5"
+  resolved "https://registry.yarnpkg.com/expo-location/-/expo-location-16.5.5.tgz#3db84f5fecf8cbfdff1e3dbe06fdc823a56bc02c"
+  integrity sha512-dXEd1HaZgdi6yHVF8R+SMnGlKDYrD+Hkkzd/b9edjMSUBLxF2y824AFSSNUf6BVOM53tJBOFEELneXkU1uj9nA==
+
+expo-modules-autolinking@1.10.3:
+
   version "1.10.3"
   resolved "https://registry.npmjs.org/expo-modules-autolinking/-/expo-modules-autolinking-1.10.3.tgz"
   integrity sha512-pn4n2Dl4iRh/zUeiChjRIe1C7EqOw1qhccr85viQV7W6l5vgRpY0osE51ij5LKg/kJmGRcJfs12+PwbdTplbKw==
@@ -5479,6 +5491,13 @@ react-native-image-slider-box@^2.0.7:
   integrity sha512-opZ0a5HYkK9Ofb5ihcdFJ+CqH2GSsEdyV75TOnZqs3PVsP8p8LWaWyf/Qj8qNdt2Jdv2qpiogqwH6gDwf75ZMg==
   dependencies:
     react-native-snap-carousel latest
+
+react-native-maps@^1.11.3:
+  version "1.11.3"
+  resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-1.11.3.tgz#7186add5851b50d92501e3791fca2dd7437c80ba"
+  integrity sha512-alz5FnQicz21lL09oTnQvX5Tw9zHoRabE3hchBnYS56KaF/6l0/cHe5ImMtcqriD9fmn6SXjW3cahELkCoR5mw==
+  dependencies:
+    "@types/geojson" "^7946.0.13"
 
 react-native-paper@^5.12.3:
   version "5.12.3"

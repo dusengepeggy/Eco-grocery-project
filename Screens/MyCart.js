@@ -1,6 +1,6 @@
 import { Text, View,TouchableOpacity,FlatList } from 'react-native'
 import React from 'react'
-import MycartItem from '../Components/MycartItem';
+
 import { styles } from '../Styles/MyCartStyle';
 
 export default function Mycart() {
@@ -33,6 +33,12 @@ export default function Mycart() {
             caption:'Coke',
             price: '205$'
         },
+
+// import MycartItem from '../Components/MycartItem'
+export default function MyCart() {
+  return (
+    <View>
+
 
 
     ]
