@@ -84,4 +84,5 @@ export const styles = StyleSheet.create({
         left:180,
         top:70,
     },
+    
 })

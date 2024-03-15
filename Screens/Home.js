@@ -1,5 +1,5 @@
 import { FlatList, ImageBackground, ScrollView, Text, View } from "react-native";
-import React from "react";
+import React, {useState} from "react";
 import { StatusBar } from "expo-status-bar";
 import { styles } from "../Styles/HomeStyle";
 import Search from "../Components/Search";
@@ -15,6 +15,28 @@ const Carrots= require('../assets/Carrots.jpg')
 
 
 export default function Home() {
+  const [searchText, setSearchText]= useState('')
+  const [searchData, setSearchData]=useState([])
+  const Searching=()=>{
+    if(searchText.length>0){
+      const filtering=fruits.filter(item=>
+        item.name.toLowerCase().includes(searchText.toLowerCase())
+      )
+      const filtering2=fruits2.filter(item=>
+        item.name.toLowerCase().includes(searchText.toLowerCase())
+      )
+      setSearchData(filtering2)
+    }
+    else{
+      setSearchData([])
+    }
+
+  }
+
+  React.useEffect(()=>{
+    Searching()
+  }, [searchText])
+
   const fruits=[
     {
       id:1,
@@ -42,6 +64,18 @@ const fruits2=[
       name:'Carrots',
       price:4.99
     },
+    {
+      id:3,
+      fruit: Bananas,
+      name:'Organic Bananas',
+      price:4.99
+    },
+    {
+      id:4,
+      fruit: Apple,
+      name:'Fresh Apples',
+      price:4.99
+    },
   ]
 
   const sliders=[
@@ -58,7 +92,7 @@ const fruits2=[
           <Icon name="bell-outline" type="material-community" size={26} color={'#FECB4C'}/>
         </View>
       </View>
-      <Search placeholder={'Search Store'}/>
+      <Search placeholder={'Search Store'} value={searchText} changeText={setSearchText}/>
       <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.background}>
         <SliderBox 
@@ -68,7 +102,7 @@ const fruits2=[
         borderRadius={15}
         autoplay
         circleLoop
-        activeOpacity={0.5}
+     
         dotStyle={{
          width: 15,
          height: 7,
@@ -79,7 +113,7 @@ const fruits2=[
         </View>
       </View>
       <View>
-        <View style={styles.header2}>
+        {searchText.length<=0?(<><View style={styles.header2}>
           <Text style={styles.text}>Exclusive Offer</Text>
           <Text style={styles.text2}>See all</Text>
         </View>
@@ -100,7 +134,15 @@ const fruits2=[
           <View key={index}>
             <FoodCard image={item.fruit} name={item.name} price={item.price}/>
           </View>)}
-        </View>
+        </View></>):( <>
+        <Text style={styles.text}>Search Results</Text>
+        <View style={styles.cards}>
+          
+          {searchData.map((item, index)=>
+          <View key={index}>
+            <FoodCard image={item.fruit} name={item.name} price={item.price}/>
+          </View>)}
+        </View></>)}
       </View>
     </ScrollView>
     </View>

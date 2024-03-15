@@ -18,6 +18,19 @@ export const styles = StyleSheet.create({
         
         
     },
+    products2:{
+        height:220,
+        width:170,
+        shadowOffset:{width: 3, height: 4},
+        shadowColor:'gray',
+        shadowOpacity:0.3,
+        borderRadius:15,
+        backgroundColor:'white',
+        borderWidth:1,
+        borderColor:'whitesmoke',
+        
+        
+    },
     price1:{
         paddingHorizontal:15
     },
@@ -50,6 +63,12 @@ export const styles = StyleSheet.create({
         display:'flex',
         flexDirection:'row',
         gap:60
+    },
+    text3:{
+        fontWeight:'bold',
+        fontSize:17,
+        paddingVertical:25,
+        textAlign:'center'
     }
 
 
