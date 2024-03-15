@@ -3,7 +3,7 @@ import React from "react";
 import { styles } from "../Styles/SearchStyle";
 import { TextInput } from "react-native-paper";
 
-export default function Search({placeholder}) {
+export default function Search({placeholder, value, changeText}) {
   return (
     <View style={styles.container}>
       <TextInput
@@ -12,6 +12,8 @@ export default function Search({placeholder}) {
         theme={{ roundness: 10, colors:{primary:"transparent"} }}
         placeholder={placeholder} mode
         left={<TextInput.Icon icon={'magnify'} color={'#A8A8A8'} size={35}/>}
+        value={value}
+        onChangeText={changeText}
       />
     </View>
   );
