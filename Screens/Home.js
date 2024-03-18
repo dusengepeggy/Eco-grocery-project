@@ -1,11 +1,13 @@
 import { FlatList, ImageBackground, ScrollView, Text, View } from "react-native";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { StatusBar } from "expo-status-bar";
 import { styles } from "../Styles/HomeStyle";
 import Search from "../Components/Search";
 import { Icon } from "react-native-elements";
 import FoodCard from "../Components/FoodCard";
 import { SliderBox } from "react-native-image-slider-box";
+import { FIREBASE_AUTH } from "../fireBase/fireBase.comfiguration";
+export const authenticate = FIREBASE_AUTH;
 
 
 const Bananas= require('../assets/Bananas.jpg')
@@ -17,6 +19,19 @@ const Carrots= require('../assets/Carrots.jpg')
 export default function Home() {
   const [searchText, setSearchText]= useState('')
   const [searchData, setSearchData]=useState([])
+  const [currentUser, setCurrentUser]=useState(null)
+
+  useEffect(()=>{
+    const subscribe= authenticate.onAuthStateChanged((user)=>{
+      if(user){
+        setCurrentUser(user)
+      }
+      else{
+        setCurrentUser(null)
+      }
+    })
+    return subscribe
+  },[currentUser])
   const Searching=()=>{
     if(searchText.length>0){
       const filtering=fruits.filter(item=>
@@ -87,7 +102,10 @@ const fruits2=[
     <View style={styles.container}>
       <StatusBar style="auto"/>
       <View style={styles.header}>
-        <Text style={styles.text}>Hello, Username</Text>
+        <View>
+          {currentUser?(<Text style={styles.text}>Welcome, {currentUser.displayName}</Text>):(<Text style={styles.text}>Welcome</Text>)}
+          
+          </View>
         <View style={styles.icon}>
           <Icon name="bell-outline" type="material-community" size={26} color={'#FECB4C'}/>
         </View>

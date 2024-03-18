@@ -43,12 +43,11 @@ export default function Favorite() {
         <FlatList 
         data={products}
         renderItem={({item})=>  <FavoriteItem name={item.name} caption={item.caption} image={item.image} price={item.price} /> }
-        keyExtractor={item => item.id}
-        />
+        keyExtractor={item => item.id}/>
 
 <View style={styles.buttoncard}>
     <TouchableOpacity style={styles.button}>
-     <Text style={styles.buttontext}>Add All to cart</Text> 
+      <Text style={styles.buttontext}>Add All to cart</Text> 
       </TouchableOpacity>
       </View>
     </View>
