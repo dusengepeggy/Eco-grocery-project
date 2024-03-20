@@ -1,10 +1,10 @@
 import { Text, View,TouchableOpacity,FlatList } from 'react-native'
 import React from 'react'
-
+import trackOrder from './trackOrder';
 import { styles } from '../Styles/MyCartStyle';
 import MycartItem from '../Components/MycartItem'
 
-export default function Mycart() {
+export default function Mycart({navigation}) {
     const products=[
         {
             id:1,
@@ -50,8 +50,8 @@ export default function Mycart() {
         keyExtractor={item => item.id}
         />
 <View style={styles.buttoncard}>
-    <TouchableOpacity style={styles.button}>
-      <TouchableOpacity style={styles.buttonText}><Text style={styles.buttontext}>4</Text></TouchableOpacity>
+    <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('Track')}>
+      <TouchableOpacity style={styles.buttonText}><Text style={styles.buttontext} >4</Text></TouchableOpacity>
      <Text style={styles.buttontext}>Go to check out</Text> 
      <TouchableOpacity style={styles.buttonText}><Text style={styles.buttontext}>$12.96</Text></TouchableOpacity>
       </TouchableOpacity>

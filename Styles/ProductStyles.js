@@ -1,16 +1,21 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
+const height= Dimensions.get('screen').height
+const width=Dimensions.get('screen').width
 export const styles = StyleSheet.create({
     container:{
+      height:height,
+      width:width,
         flex:1,
         backgroundColor:'white',
-        marginTop:40,
-        margin:15,
-        padding:15,
+  
+        paddingHorizontal:15,
     
+        paddingVertical:60
     },
     slidecard:{
     borderColor:'black',
     borderRadius:10,
+    padding:10
     },
     topicons:{
     display:'flex',
@@ -45,7 +50,8 @@ export const styles = StyleSheet.create({
     },
     text2:{
       fontSize:15,
-      color:'gray'
+      color:'gray',
+      paddingVertical:10
     },
     row:{
       display:'flex',
@@ -77,7 +83,6 @@ export const styles = StyleSheet.create({
     buttontext:{
       fontSize:20,
       fontWeight:'bold',
-      fontFamily:'sans-serif',
       color:'white'
     },
     buttoncard:{

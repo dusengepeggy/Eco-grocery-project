@@ -3,9 +3,9 @@ import React from 'react'
 import { styles } from '../Styles/FoodCardStyle'
 import { Icon } from 'react-native-elements'
 
-export default function FoodCard({image, name, price}) {
+export default function FoodCard({image, name, price, press}) {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={press}>
         <View style={styles.products}>
             <Image style={styles.product} source={image} resizeMode='cover'/>
             <View style={styles.price1}>

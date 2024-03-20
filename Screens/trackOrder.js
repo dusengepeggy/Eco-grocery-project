@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
   }
 });
 
-export default MapPage = () => {
+export default MapPage = ({navigation}) => {
   const [mapRegion, setMapRegion] = useState({
     latitude: 37.78825,
     longitude: -122.4324,
@@ -159,7 +159,9 @@ export default MapPage = () => {
 
         <View style={styles.topNav}>
           <View style={styles.icon}>
+            <TouchableOpacity onPress={()=>navigation.goBack()}>
             <Icon name="chevron-left" type="material-community" size={26} color={'#FECB4C'} />
+            </TouchableOpacity>
           </View>
           <Text style={styles.title}>
             Track order

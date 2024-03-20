@@ -81,7 +81,7 @@ export default function Login({ navigation }) {
           <InputComp
             label="Password"
            
-            iconName={passwordVisible ? 'eye-off' : 'eye'}
+            iconName={passwordVisible ? 'eye' : 'eye-off'}
             value={password}
             onChangeText={(text) => setPassword(text)}
             secureTextEntry={!passwordVisible}
