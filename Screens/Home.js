@@ -7,6 +7,7 @@ import { Icon } from "react-native-elements";
 import FoodCard from "../Components/FoodCard";
 import { SliderBox } from "react-native-image-slider-box";
 import { FIREBASE_AUTH } from "../fireBase/fireBase.comfiguration";
+import { GetData } from "../FirebaseFetch/Fetch";
 export const authenticate = FIREBASE_AUTH;
 
 
@@ -16,28 +17,21 @@ const Pepper= require('../assets/Pepper.jpg')
 const Carrots= require('../assets/Carrots.jpg')
 
 
-export default function Home() {
+export default function Home({navigation}) {
   const [searchText, setSearchText]= useState('')
   const [searchData, setSearchData]=useState([])
   const [currentUser, setCurrentUser]=useState(null)
+  const [dynamic,setDynamic]=useState([])
+  const [like, setLike]=useState(false)
+ 
 
-  useEffect(()=>{
-    const subscribe= authenticate.onAuthStateChanged((user)=>{
-      if(user){
-        setCurrentUser(user)
-      }
-      else{
-        setCurrentUser(null)
-      }
-    })
-    return subscribe
-  },[currentUser])
+ 
+ 
+
+ 
   const Searching=()=>{
     if(searchText.length>0){
-      const filtering=fruits.filter(item=>
-        item.name.toLowerCase().includes(searchText.toLowerCase())
-      )
-      const filtering2=fruits2.filter(item=>
+      const filtering2=dynamic.filter(item=>
         item.name.toLowerCase().includes(searchText.toLowerCase())
       )
       setSearchData(filtering2)
@@ -47,51 +41,27 @@ export default function Home() {
     }
 
   }
-
+ 
+  React.useEffect(()=>{
+   var ItemsInStock= async ()=>{
+      var allItems =await GetData()
+      setDynamic(allItems); 
+     
+    }
+    ItemsInStock()
+    
+   
+  },[])
   React.useEffect(()=>{
     Searching()
   }, [searchText])
 
-  const fruits=[
-    {
-      id:1,
-      fruit: Bananas,
-      name:'Organic Bananas',
-      price:4.99
-    },
-    {
-      id:2,
-      fruit: Apple,
-      name:'Fresh Apples',
-      price:4.99
-    },
-  ]
-const fruits2=[
-    {
-      id:1,
-      fruit: Pepper,
-      name:'Pepper',
-      price:4.99
-    },
-    {
-      id:2,
-      fruit:Carrots,
-      name:'Carrots',
-      price:4.99
-    },
-    {
-      id:3,
-      fruit: Bananas,
-      name:'Organic Bananas',
-      price:4.99
-    },
-    {
-      id:4,
-      fruit: Apple,
-      name:'Fresh Apples',
-      price:4.99
-    },
-  ]
+  
+
+ 
+
+
+
 
   const sliders=[
     require('../assets/Fruits.jpg'),
@@ -103,7 +73,7 @@ const fruits2=[
       <StatusBar style="auto"/>
       <View style={styles.header}>
         <View>
-          {currentUser?(<Text style={styles.text}>Welcome, {currentUser.displayName}</Text>):(<Text style={styles.text}>Welcome</Text>)}
+          {currentUser?(<Text style={styles.text}>Welcome, </Text>):(<Text style={styles.text}>Welcome</Text>)}
           
           </View>
         <View style={styles.icon}>
@@ -132,25 +102,36 @@ const fruits2=[
       </View>
       <View>
         {searchText.length<=0?(<><View style={styles.header2}>
+          <Text style={styles.text}>Best Selling</Text>
+          <Text style={styles.text2}>See all</Text>
+        </View>
+        <ScrollView style={styles.cards} horizontal showsHorizontalScrollIndicator={false}>
+        
+          
+        {dynamic.map((item, index)=>{
+            if (item.sales>50) {
+              return(
+                <View key={index}>
+                  <FoodCard image={item.image} name={item.name} price={item.price} press={()=>{navigation.navigate('Detail',item)}} />
+                </View>
+
+              )
+              
+            }
+          }
+        )}
+          
+
+        </ScrollView>
+        <View style={styles.header2}>
           <Text style={styles.text}>Exclusive Offer</Text>
           <Text style={styles.text2}>See all</Text>
         </View>
         <View style={styles.cards}>
           
-          {fruits.map((item, index)=>
+          {dynamic.map((item, index)=>
           <View key={index}>
-            <FoodCard image={item.fruit} name={item.name} price={item.price}/>
-          </View>)}
-        </View>
-        <View style={styles.header2}>
-          <Text style={styles.text}>Best Selling</Text>
-          <Text style={styles.text2}>See all</Text>
-        </View>
-        <View style={styles.cards}>
-          
-          {fruits2.map((item, index)=>
-          <View key={index}>
-            <FoodCard image={item.fruit} name={item.name} price={item.price}/>
+            <FoodCard image={item.image} name={item.name} price={item.price} press={()=>{navigation.navigate('Detail',item)}}/>
           </View>)}
         </View></>):( <>
         <Text style={styles.text}>Search Results</Text>
@@ -158,10 +139,11 @@ const fruits2=[
           
           {searchData.map((item, index)=>
           <View key={index}>
-            <FoodCard image={item.fruit} name={item.name} price={item.price}/>
+            <FoodCard image={{uri:item.image[0]}} name={item.name} price={item.price} press={()=>{navigation.navigate('Detail',item)}}/>
           </View>)}
         </View></>)}
       </View>
+ 
     </ScrollView>
     </View>
   );

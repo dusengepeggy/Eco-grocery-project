@@ -29,7 +29,6 @@ export const styles = StyleSheet.create({
       buttontext:{
         fontSize:20,
         fontWeight:'bold',
-        fontFamily:'sans-serif',
         color:'white'
       },
       buttoncard:{

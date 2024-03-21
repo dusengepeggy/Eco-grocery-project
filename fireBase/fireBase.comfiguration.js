@@ -1,21 +1,19 @@
- // Import the functions you need from the SDKs you need
  import { initializeApp } from "firebase/app";
  import { getAuth} from "firebase/auth";
- // TODO: Add SDKs for Firebase products that you want to use
- // https://firebase.google.com/docs/web/setup#available-libraries
+ import {collection, getDocs, getFirestore} from "firebase/firestore"
  
- // Your web app's Firebase configuration
- // For Firebase JS SDK v7.20.0 and later, measurementId is optional
  const firebaseConfig = {
-   apiKey: "AIzaSyBXtORreKDdH3_FBlpLVnbF4u6VvydSxPs",
-   authDomain: "grocery-5b0d2.firebaseapp.com",
-   projectId: "grocery-5b0d2",
-   storageBucket: "grocery-5b0d2.appspot.com",
-   messagingSenderId: "420546576409",
-   appId: "1:420546576409:web:04b6d4287310b5f4fa2a88",
-   measurementId: "G-8N59SVDK0V"
- };
+  apiKey: "AIzaSyC0iWxrUoIFfEws9of7oH-V5YWQKsw-9Ak",
+  authDomain: "ecogroceryproject.firebaseapp.com",
+  projectId: "ecogroceryproject",
+  storageBucket: "ecogroceryproject.appspot.com",
+  messagingSenderId: "605824130258",
+  appId: "1:605824130258:web:4ad69fe36fb9fd4012e10b"
+};
 
 // Initialize Firebase
  export const FIREBASE_APP = initializeApp(firebaseConfig);
  export const FIREBASE_AUTH = getAuth(FIREBASE_APP);
+ export const FIRESTORE_DB= getFirestore(FIREBASE_APP)
+ export const colRef=collection(FIRESTORE_DB, 'ItemsInStock')
+ 

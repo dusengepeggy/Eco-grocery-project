@@ -6,6 +6,7 @@ import { FIREBASE_AUTH } from '../fireBase/fireBase.comfiguration';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 
+
 export const authenticate = FIREBASE_AUTH;
 
 const { height, width } = Dimensions.get('screen');
@@ -17,6 +18,8 @@ const Signup = ({ navigation }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+
+ 
 
 
   const togglePasswordVisibility = () => {
@@ -46,7 +49,7 @@ const Signup = ({ navigation }) => {
           password,
         );
       
-        console.log(response.user.displayName);
+        console.log(response);
         navigation.navigate('Login')
       } catch (error) {
         if (error.code === 'auth/email-already-in-use') {
@@ -87,7 +90,7 @@ const Signup = ({ navigation }) => {
         <InputComp
           label="Password"
          
-          iconName={passwordVisible ? 'eye-off' : 'eye'}
+          iconName={passwordVisible ? 'eye' : 'eye-off'}
           value={password}
           onChangeText={(text) => setPassword(text)}
           secureTextEntry={!passwordVisible}

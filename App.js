@@ -21,6 +21,8 @@ import SearchPage from "./Screens/SearchPage";
 import MyCart from "./Screens/MyCart";
 import Favorite from "./Screens/Favorite";
 import Profile from "./Screens/Profile";
+import trackOrder from "./Screens/trackOrder"
+import Product from "./Screens/Product"
 import { Icon } from "react-native-elements";
 
 const Stack = createStackNavigator();
@@ -43,17 +45,34 @@ export const TabNavigation = () => {
         name="Home"
         component={Home}
         options={{
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({ focused }) => focused?(<View
+            style={{
+              width: 70,
+              height: 70,
+              borderRadius: 35,
+              display: "flex",
+              backgroundColor: "#FECC4C",
+              top: -30,
+              justifyContent: "center",
+              alignItems: "center",
+              shadowOffset: { width: 4, height: 4 },
+              shadowColor: "#47AD6D",
+              shadowOpacity: 0.5,
+            }}
+          >
+            <Icon
+              name="home-outline"
+              type="material-community"
+              size={30}
+              color="white"
+            />
+          </View>): (
             <Icon
               name="home-outline"
               type="material-community"
               size={30}
               color="#47AD6D"
-              style={
-                focused
-                  ? { borderBottomWidth: 5, borderBottomColor: "#47AD6D" }
-                  : null
-              }
+              
             />
           ),
         }}
@@ -62,17 +81,34 @@ export const TabNavigation = () => {
         name="Search"
         component={SearchPage}
         options={{
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({ focused }) =>focused?(<View
+            style={{
+              width: 70,
+              height: 70,
+              borderRadius: 35,
+              display: "flex",
+              backgroundColor: "#FECC4C",
+              top: -30,
+              justifyContent: "center",
+              alignItems: "center",
+              shadowOffset: { width: 4, height: 4 },
+              shadowColor: "#47AD6D",
+              shadowOpacity: 0.5,
+            }}
+          >
+            <Icon
+              name="magnify"
+              type="material-community"
+              size={30}
+              color="white"
+            />
+          </View>):(
             <Icon
               name="magnify"
               type="material-community"
               size={30}
               color="#47AD6D"
-              style={
-                focused
-                  ? { borderBottomWidth: 5, borderBottomColor: "#47AD6D" }
-                  : null
-              }
+              
             />
           ),
         }}
@@ -81,7 +117,8 @@ export const TabNavigation = () => {
         name="Cart"
         component={MyCart}
         options={{
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({ focused }) => focused? (
+            
             <View
               style={{
                 width: 70,
@@ -104,24 +141,47 @@ export const TabNavigation = () => {
                 color="white"
               />
             </View>
-          ),
+          ):(<Icon
+            name="cart-outline"
+            type="material-community"
+            size={30}
+            color="#47AD6D"
+            
+          />),
         }}
       />
       <Tab.Screen
         name="Favorite"
         component={Favorite}
         options={{
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({ focused }) =>focused?(<View
+            style={{
+              width: 70,
+              height: 70,
+              borderRadius: 35,
+              display: "flex",
+              backgroundColor: "#FECC4C",
+              top: -30,
+              justifyContent: "center",
+              alignItems: "center",
+              shadowOffset: { width: 4, height: 4 },
+              shadowColor: "#47AD6D",
+              shadowOpacity: 0.5,
+            }}
+          >
+            <Icon
+              name="heart-outline"
+              type="material-community"
+              size={30}
+              color="white"
+            />
+          </View>): (
             <Icon
               name="heart-outline"
               type="material-community"
               size={30}
               color="#47AD6D"
-              style={
-                focused
-                  ? { borderBottomWidth: 5, borderBottomColor: "#47AD6D" }
-                  : null
-              }
+              
             />
           ),
         }}
@@ -130,17 +190,34 @@ export const TabNavigation = () => {
         name="Profile"
         component={Profile}
         options={{
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({ focused }) =>focused?(<View
+            style={{
+              width: 70,
+              height: 70,
+              borderRadius: 35,
+              display: "flex",
+              backgroundColor: "#FECC4C",
+              top: -30,
+              justifyContent: "center",
+              alignItems: "center",
+              shadowOffset: { width: 4, height: 4 },
+              shadowColor: "#47AD6D",
+              shadowOpacity: 0.5,
+            }}
+          >
+            <Icon
+              name="account-outline"
+              type="material-community"
+              size={30}
+              color="white"
+            />
+          </View>): (
             <Icon
               name="account-outline"
               type="material-community"
               size={30}
               color="#47AD6D"
-              style={
-                focused
-                  ? { borderBottomWidth: 5, borderBottomColor: "#47AD6D" }
-                  : null
-              }
+              
             />
           ),
         }}
@@ -224,6 +301,8 @@ export default function App() {
           }}
         />
         <Stack.Screen name="Home1" component={TabNavigation} />
+        <Stack.Screen name="Track" component={trackOrder} />
+        <Stack.Screen name="Detail" component={Product} />
       </Stack.Navigator>
     </NavigationContainer>
   );
