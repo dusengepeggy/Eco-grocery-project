@@ -50,7 +50,7 @@ export default function Mycart({navigation}) {
         keyExtractor={item => item.id}
         />
 <View style={styles.buttoncard}>
-    <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('Track')}>
+    <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('CheckOut')}>
       <TouchableOpacity style={styles.buttonText}><Text style={styles.buttontext} >4</Text></TouchableOpacity>
      <Text style={styles.buttontext}>Go to check out</Text> 
      <TouchableOpacity style={styles.buttonText}><Text style={styles.buttontext}>$12.96</Text></TouchableOpacity>

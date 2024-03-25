@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import Search from "./Components/Search";
 import FoodCard from "./Components/FoodCard";
+import Sucessful from "./Screens/approvedOrder";
 import Home from "./Screens/Home";
 import Splash from "./Screens/Splash";
 import Signup from "./Screens/Signup";
@@ -23,6 +24,8 @@ import Favorite from "./Screens/Favorite";
 import Profile from "./Screens/Profile";
 import trackOrder from "./Screens/trackOrder"
 import Product from "./Screens/Product"
+import CheckOut from "./Screens/sus";
+
 import { Icon } from "react-native-elements";
 
 const Stack = createStackNavigator();
@@ -303,6 +306,8 @@ export default function App() {
         <Stack.Screen name="Home1" component={TabNavigation} />
         <Stack.Screen name="Track" component={trackOrder} />
         <Stack.Screen name="Detail" component={Product} />
+        <Stack.Screen name="CheckOut" component={CheckOut} />
+        <Stack.Screen name="Aprrove" component={Sucessful} />
       </Stack.Navigator>
     </NavigationContainer>
   );
